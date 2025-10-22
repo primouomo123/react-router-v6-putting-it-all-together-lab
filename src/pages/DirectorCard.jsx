@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 
 function DirectorCard() {
     // Replace me
@@ -16,7 +16,7 @@ function DirectorCard() {
         <ul>
             {director.movies.map((movie) => (
             <li key={movie.id}>
-                <a>{movie.title}</a>
+                <Link to={movie.id} >{movie.title}</Link>
             </li>
             ))}
         </ul>
