@@ -1,8 +1,11 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet, Link, useOutletContext, useParams } from "react-router-dom"
 
 function DirectorCard() {
     // Replace me
-    const director = null
+    const {directors, setDirectors} = useOutletContext();
+    const {id} = useParams();
+
+    const director = directors.find(d => d.id === id);
 
     if (!director) {
         return <h2>Director not found.</h2>
@@ -21,7 +24,7 @@ function DirectorCard() {
             ))}
         </ul>
         <Link to={`movies/new`}>Add New Movie</Link>
-        <Outlet />
+        <Outlet context={{directors, setDirectors, director}} />
         </div>
     )
 }

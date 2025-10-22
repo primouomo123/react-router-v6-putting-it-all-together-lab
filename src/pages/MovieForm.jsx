@@ -1,13 +1,16 @@
 import { useState } from "react"
+import { useOutletContext, useParams, useNavigate } from "react-router-dom"
 import { v4 as uuidv4 } from 'uuid'
 
 function MovieForm() {
-  const [title, setTitle] = useState("")
-  const [time, setTime] = useState("")
-  const [genres, setGenres] = useState("")
+  const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
+  const [genres, setGenres] = useState("");
+  const {id, movieId} = useParams();
+  const navigate = useNavigate();
 
   // Replace me
-  const director = null
+  const {setDirectors, director } = useOutletContext();
   
   if (!director) { return <h2>Director not found.</h2>}
 
@@ -30,10 +33,17 @@ function MovieForm() {
       if (!r.ok) { throw new Error("failed to add movie") }
       return r.json()
     })
-    .then(data => {
-      console.log(data)
+    .then(updatedDirector => { //This is the updated director with the new movie
       // handle context/state changes
+      setDirectors(previousDirectors => previousDirectors.map(prev => {
+        if (prev.id === id) {
+          return updatedDirector;
+        }
+        return prev;
+
+      }))
       // navigate to newly created movie page
+      navigate(`/directors/${director.id}/${updatedDirector.id}`)
     })
     .catch(console.log)
   }
