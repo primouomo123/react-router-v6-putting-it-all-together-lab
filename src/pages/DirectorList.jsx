@@ -9,9 +9,13 @@ const DirectorList = () => {
     ))
 
     return (
-        <ul>
-            {displayDirectors}
-        </ul>
+        <div>
+            <ul>
+                {displayDirectors}
+                <br />
+                <Link to={`new`}>Add New Director</Link>
+            </ul>
+        </div>      
     );
 }
 

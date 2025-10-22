@@ -20,7 +20,7 @@ const App = () => {
                         <Route path="new" element={<DirectorForm />} />
                         <Route path=":id" element={<DirectorCard />}>
                             <Route path="movies/new" element={<MovieForm />} />
-                            <Route path="movies/:movieID" element={<MovieCard />} />
+                            <Route path="movies/:movieId" element={<MovieCard />} />
                         </Route>
                     </Route>
                 </Routes>

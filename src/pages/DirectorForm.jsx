@@ -27,7 +27,7 @@ const {setDirectors} = useOutletContext();
         // handle context/state changes
         setDirectors(prev => [...prev, newDirector])
         // navigate to newly created director page
-        navigate(`/directors/${director.id}`);
+        navigate(`/directors/${newDirector.id}`);
 
     })
     .catch(console.log)
