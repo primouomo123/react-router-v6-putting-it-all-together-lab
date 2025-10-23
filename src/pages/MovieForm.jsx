@@ -43,7 +43,7 @@ function MovieForm() {
 
       }))
       // navigate to newly created movie page
-      navigate(`/directors/${director.id}/${updatedDirector.id}`)
+      navigate(`/directors/${director.id}/${updatedDirector.id.movies.movieId}`)
     })
     .catch(console.log)
   }
